@@ -6,14 +6,14 @@
 //  Copyright © 2020 Alex Machado. All rights reserved.
 //
 
-public class InsertionSort<T: Comparable> {
-    private var array: [T]
+public class InsertionSort<ComparableType: Comparable>: SortingAlgorithm {
+    private var array: [ComparableType]
 
-    init(input: [T]) {
+    init(input: [ComparableType]) {
         array = input
     }
 
-    public func sort() -> [T] {
+    public func sort() -> [ComparableType] {
         var j = 1
         while j < array.count {
             let key = array[j]

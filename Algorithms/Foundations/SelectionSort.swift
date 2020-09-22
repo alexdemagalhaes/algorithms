@@ -6,14 +6,14 @@
 //  Copyright © 2020 Alex Machado. All rights reserved.
 //
 
-public class SelectionSort<T: Comparable> {
-    private var array: [T]
+public class SelectionSort<ComparableType: Comparable>: SortingAlgorithm {
+    private var array: [ComparableType]
 
-    init(input: [T]) {
+    init(input: [ComparableType]) {
         array = input
     }
 
-    public func sort() -> [T] {
+    public func sort() -> [ComparableType] {
         var j = 0
         while j < array.count-1 {
             var smallest = j
