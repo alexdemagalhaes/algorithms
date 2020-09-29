@@ -6,7 +6,7 @@
 //  Copyright © 2020 Alex Machado. All rights reserved.
 //
 
-public class MergeSort<ComparableType: Comparable>: SortingAlgorithm {
+public final class MergeSort<ComparableType: Comparable>: SortingAlgorithm {
     private var array: [ComparableType]
 
     init(input: [ComparableType]) {

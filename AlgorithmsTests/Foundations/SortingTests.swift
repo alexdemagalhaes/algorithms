@@ -9,7 +9,7 @@
 @testable import Algorithms
 import XCTest
 
-class SortingTests: XCTestCase {
+final class SortingTests: XCTestCase {
     private func testSortingAlgorithms<ComparableType: Comparable>(withInput input: [ComparableType], expectedOutput: [ComparableType]) {
         let algorithms: [AnySortingAlgorithm<ComparableType>] = [
             AnySortingAlgorithm(InsertionSort(input: input)),

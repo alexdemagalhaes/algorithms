@@ -6,7 +6,7 @@
 //  Copyright © 2020 Alex Machado. All rights reserved.
 //
 
-public class InsertionSort<ComparableType: Comparable>: SortingAlgorithm {
+public final class InsertionSort<ComparableType: Comparable>: SortingAlgorithm {
     private var array: [ComparableType]
 
     init(input: [ComparableType]) {

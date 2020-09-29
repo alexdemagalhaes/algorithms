@@ -9,7 +9,7 @@
 @testable import Algorithms
 import XCTest
 
-class SearchTests: XCTestCase {
+final class SearchTests: XCTestCase {
     private func testSearchAlgorithms<ComparableType: Comparable>(withInput input: [ComparableType], value: ComparableType) {
         let algorithms: [(AnySearchAlgorithm<ComparableType>, Int?)] = [
             (AnySearchAlgorithm(LinearSearch(input: input)), input.firstIndex(of: value)),

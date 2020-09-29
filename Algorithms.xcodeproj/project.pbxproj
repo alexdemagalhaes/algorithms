@@ -12,6 +12,8 @@
 		739E07C7251B3AFA004C05BD /* SearchAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739E07C6251B3AFA004C05BD /* SearchAlgorithm.swift */; };
 		739E07C9251B3B9D004C05BD /* SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739E07C8251B3B9D004C05BD /* SearchTests.swift */; };
 		739E07CD251C7B4D004C05BD /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739E07CC251C7B4D004C05BD /* BinarySearch.swift */; };
+		739E080025231B0A004C05BD /* MiscellaneousAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739E07FF25231B0A004C05BD /* MiscellaneousAlgorithms.swift */; };
+		739E080225231E64004C05BD /* MiscellaneousTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739E080125231E64004C05BD /* MiscellaneousTests.swift */; };
 		73A22ABB2519CBBF00551DC0 /* MergeSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A22ABA2519CBBF00551DC0 /* MergeSort.swift */; };
 		73A22ABD2519D98100551DC0 /* SortingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A22ABC2519D98100551DC0 /* SortingTests.swift */; };
 		73A22AC02519E5C800551DC0 /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A22ABF2519E5C800551DC0 /* Numbers.swift */; };
@@ -50,6 +52,8 @@
 		739E07C6251B3AFA004C05BD /* SearchAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAlgorithm.swift; sourceTree = "<group>"; };
 		739E07C8251B3B9D004C05BD /* SearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTests.swift; sourceTree = "<group>"; };
 		739E07CC251C7B4D004C05BD /* BinarySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearch.swift; sourceTree = "<group>"; };
+		739E07FF25231B0A004C05BD /* MiscellaneousAlgorithms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscellaneousAlgorithms.swift; sourceTree = "<group>"; };
+		739E080125231E64004C05BD /* MiscellaneousTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscellaneousTests.swift; sourceTree = "<group>"; };
 		73A22ABA2519CBBF00551DC0 /* MergeSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSort.swift; sourceTree = "<group>"; };
 		73A22ABC2519D98100551DC0 /* SortingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingTests.swift; sourceTree = "<group>"; };
 		73A22ABF2519E5C800551DC0 /* Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 			children = (
 				73A22AC6251B386500551DC0 /* Search */,
 				73A22AC5251B385A00551DC0 /* Sorting */,
+				739E07FE25231A8D004C05BD /* Miscellaneous */,
 			);
 			path = Foundations;
 			sourceTree = "<group>";
@@ -127,8 +132,17 @@
 			children = (
 				739E07C8251B3B9D004C05BD /* SearchTests.swift */,
 				73A22ABC2519D98100551DC0 /* SortingTests.swift */,
+				739E080125231E64004C05BD /* MiscellaneousTests.swift */,
 			);
 			path = Foundations;
+			sourceTree = "<group>";
+		};
+		739E07FE25231A8D004C05BD /* Miscellaneous */ = {
+			isa = PBXGroup;
+			children = (
+				739E07FF25231B0A004C05BD /* MiscellaneousAlgorithms.swift */,
+			);
+			path = Miscellaneous;
 			sourceTree = "<group>";
 		};
 		73A22ABE2519E5BB00551DC0 /* Helpers */ = {
@@ -255,6 +269,7 @@
 				73C7B73724F79D5B00EE5275 /* SelectionSort.swift in Sources */,
 				73A22AC4251B385600551DC0 /* LinearSearch.swift in Sources */,
 				739E07CD251C7B4D004C05BD /* BinarySearch.swift in Sources */,
+				739E080025231B0A004C05BD /* MiscellaneousAlgorithms.swift in Sources */,
 				73A22AC22519E95D00551DC0 /* SortingAlgorithm.swift in Sources */,
 				7393610B24F6485700231592 /* InsertionSort.swift in Sources */,
 			);
@@ -266,6 +281,7 @@
 			files = (
 				739E07C9251B3B9D004C05BD /* SearchTests.swift in Sources */,
 				73A22AC02519E5C800551DC0 /* Numbers.swift in Sources */,
+				739E080225231E64004C05BD /* MiscellaneousTests.swift in Sources */,
 				73A22ABD2519D98100551DC0 /* SortingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
