@@ -14,7 +14,8 @@ final class SortingTests: XCTestCase {
         let algorithms: [AnySortingAlgorithm<ComparableType>] = [
             AnySortingAlgorithm(InsertionSort(input: input)),
             AnySortingAlgorithm(SelectionSort(input: input)),
-            AnySortingAlgorithm(MergeSort(input: input))
+            AnySortingAlgorithm(MergeSort(input: input)),
+            AnySortingAlgorithm(BubbleSort(input: input))
         ]
         algorithms.forEach { algorithm in
             XCTAssertEqual(algorithm.sort(), expectedOutput)
