@@ -6,21 +6,21 @@
 //  Copyright © 2020 Alex Machado. All rights reserved.
 //
 
-public class BruteForceMaximumSubarrayProblemSolver<ComparableType: Comparable>: MaximumSubarrayProblemSolver {
-    private let array: [ComparableType]
-    private let evaluator: SubarrayEvaluator<ComparableType>
+public class BruteForceMaximumSubarrayProblemSolver<Number: SignedNumeric & Comparable>: MaximumSubarrayProblemSolver {
+    private let array: [Number]
+    private let evaluator: SubarrayEvaluator<Number>
 
-    init(input: [ComparableType], evaluator: @escaping SubarrayEvaluator<ComparableType>) {
+    init(input: [Number], evaluator: @escaping SubarrayEvaluator<Number>) {
         array = input
         self.evaluator = evaluator
     }
 
-    public func solveMaximumSubarrayProblem() -> ArraySlice<ComparableType>? {
-        guard array.count > 1 else { return nil }
+    public func solveMaximumSubarrayProblem() -> Subarray<Number>? {
+        guard !array.isEmpty else { return nil }
 
-        var subarray: ArraySlice<ComparableType>?
+        var subarray: ArraySlice<Number>?
         for i in 0..<array.count-1 {
-            for j in i+1..<array.count {
+            for j in i..<array.count {
                 let newSubarray = array[i...j]
                 if let oldSubarray = subarray {
                     subarray = evaluator(oldSubarray, newSubarray)
@@ -29,6 +29,11 @@ public class BruteForceMaximumSubarrayProblemSolver<ComparableType: Comparable>:
                 }
             }
         }
-        return subarray
+
+        if let subarray = subarray {
+            return Subarray(low: subarray.startIndex, high: subarray.endIndex-1, sum: subarray.reduce(0, +))
+        }
+
+        return nil
     }
 }

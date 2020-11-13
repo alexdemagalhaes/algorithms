@@ -6,22 +6,28 @@
 //  Copyright © 2020 Alex Machado. All rights reserved.
 //
 
-public typealias SubarrayEvaluator<ComparableType: Comparable> = (ArraySlice<ComparableType>, ArraySlice<ComparableType>) -> ArraySlice<ComparableType>
-
-public protocol MaximumSubarrayProblemSolver {
-    associatedtype ComparableType: Comparable
-
-    func solveMaximumSubarrayProblem() -> ArraySlice<ComparableType>?
+public struct Subarray<Number: SignedNumeric & Comparable>: Equatable {
+    let low: Int
+    let high: Int
+    let sum: Number
 }
 
-struct AnyMaximumSubarrayProblemSolver<ComparableType: Comparable> {
-    private let problemSolvingMethod: () -> ArraySlice<ComparableType>?
+public typealias SubarrayEvaluator<Number: SignedNumeric & Comparable> = (ArraySlice<Number>, ArraySlice<Number>) -> ArraySlice<Number>
 
-    init<Algorithm: MaximumSubarrayProblemSolver>(_ algorithm: Algorithm) where Algorithm.ComparableType == ComparableType {
+public protocol MaximumSubarrayProblemSolver {
+    associatedtype Number: SignedNumeric & Comparable
+
+    func solveMaximumSubarrayProblem() -> Subarray<Number>?
+}
+
+struct AnyMaximumSubarrayProblemSolver<Number: SignedNumeric & Comparable> {
+    private let problemSolvingMethod: () -> Subarray<Number>?
+
+    init<Algorithm: MaximumSubarrayProblemSolver>(_ algorithm: Algorithm) where Algorithm.Number == Number {
         self.problemSolvingMethod = algorithm.solveMaximumSubarrayProblem
     }
 
-    func solveMaximumSubarrayProblem() -> ArraySlice<ComparableType>? {
+    func solveMaximumSubarrayProblem() -> Subarray<Number>? {
         return problemSolvingMethod()
     }
 }

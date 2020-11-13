@@ -10,10 +10,12 @@
 import XCTest
 
 final class MaximumSubarrayProblemSolverTests: XCTestCase {
-    private func testMaximumSubarrayProblemAlgorithms<ComparableType: Comparable>(withInput input: [ComparableType],
-                                                                                  evaluator: @escaping SubarrayEvaluator<ComparableType>,
-                                                                                  expectedOutput: ArraySlice<ComparableType>?) {
-        let algorithms: [(AnyMaximumSubarrayProblemSolver<ComparableType>, ArraySlice<ComparableType>?)] = [
+    private func testMaximumSubarrayProblemAlgorithms<Number: AdditiveArithmetic & ExpressibleByIntegerLiteral>(
+        withInput input: [Number],
+        evaluator: @escaping SubarrayEvaluator<Number>,
+        expectedOutput: Subarray<Number>?
+    ) {
+        let algorithms: [(AnyMaximumSubarrayProblemSolver<Number>, Subarray<Number>?)] = [
             (AnyMaximumSubarrayProblemSolver(BruteForceMaximumSubarrayProblemSolver(input: input, evaluator: evaluator)), expectedOutput)
         ]
         algorithms.forEach { (algorithm, expectedOutput) in
@@ -22,13 +24,8 @@ final class MaximumSubarrayProblemSolverTests: XCTestCase {
     }
 
     private func volatileChemicalCorporationEvaluator(lhs: ArraySlice<Int>, rhs: ArraySlice<Int>) -> ArraySlice<Int> {
-        XCTAssertNotNil(lhs.first)
-        XCTAssertNotNil(lhs.last)
-        XCTAssertNotNil(rhs.first)
-        XCTAssertNotNil(rhs.last)
-
-        let lhsProfit = lhs.last! - lhs.first!
-        let rhsProfit = rhs.last! - rhs.first!
+        let lhsProfit = lhs.reduce(0, +)
+        let rhsProfit = rhs.reduce(0, +)
         if rhsProfit > lhsProfit {
             return rhs
         } else {
@@ -37,12 +34,14 @@ final class MaximumSubarrayProblemSolverTests: XCTestCase {
     }
 
     func testMaximumProfitStartingAtLowestPriceButNotEndingAtHighestPrice() {
-        let array = [100, 113, 110, 85, 105, 102, 86, 63, 81, 101, 94, 106, 101, 79, 94, 90, 97]
-        testMaximumSubarrayProblemAlgorithms(withInput: array, evaluator: volatileChemicalCorporationEvaluator, expectedOutput: array[7...11])
+        let array = [13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7]
+        let maximumSubarray = Subarray(low: 7, high: 10, sum: 43)
+        testMaximumSubarrayProblemAlgorithms(withInput: array, evaluator: volatileChemicalCorporationEvaluator, expectedOutput: maximumSubarray)
     }
 
     func testMaximumProfitNotStartingAtLowestPriceAndNotEndingAtHighestPrice() {
-        let array = [10, 11, 7, 10, 6]
-        testMaximumSubarrayProblemAlgorithms(withInput: array, evaluator: volatileChemicalCorporationEvaluator, expectedOutput: array[2...3])
+        let array = [1, -4, 3, -4]
+        let maximumSubarray = Subarray(low: 2, high: 2, sum: 3)
+        testMaximumSubarrayProblemAlgorithms(withInput: array, evaluator: volatileChemicalCorporationEvaluator, expectedOutput: maximumSubarray)
     }
 }
