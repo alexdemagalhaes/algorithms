@@ -16,7 +16,8 @@ final class MaximumSubarrayProblemSolverTests: XCTestCase {
         expectedOutput: Subarray<Number>?
     ) {
         let algorithms: [(AnyMaximumSubarrayProblemSolver<Number>, Subarray<Number>?)] = [
-            (AnyMaximumSubarrayProblemSolver(BruteForceMaximumSubarrayProblemSolver(input: input, evaluator: evaluator)), expectedOutput)
+            (AnyMaximumSubarrayProblemSolver(BruteForceMaximumSubarrayProblemSolver(input: input, evaluator: evaluator)), expectedOutput),
+            (AnyMaximumSubarrayProblemSolver(DivideAndConquerMaximumSubarrayProblemSolver(input: input, evaluator: evaluator)), expectedOutput)
         ]
         algorithms.forEach { (algorithm, expectedOutput) in
             XCTAssertEqual(algorithm.solveMaximumSubarrayProblem(), expectedOutput)
@@ -42,6 +43,12 @@ final class MaximumSubarrayProblemSolverTests: XCTestCase {
     func testMaximumProfitNotStartingAtLowestPriceAndNotEndingAtHighestPrice() {
         let array = [1, -4, 3, -4]
         let maximumSubarray = Subarray(low: 2, high: 2, sum: 3)
+        testMaximumSubarrayProblemAlgorithms(withInput: array, evaluator: volatileChemicalCorporationEvaluator, expectedOutput: maximumSubarray)
+    }
+
+    func testMaximumProfitCrossingMidpointOfTheArray() {
+        let array = [1, -2, 3, -2, 3, -1, 2, -5, 3, -1, 2]
+        let maximumSubarray = Subarray(low: 2, high: 6, sum: 5)
         testMaximumSubarrayProblemAlgorithms(withInput: array, evaluator: volatileChemicalCorporationEvaluator, expectedOutput: maximumSubarray)
     }
 }
