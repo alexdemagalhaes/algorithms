@@ -8,28 +8,30 @@
 
 public class BruteForceMaximumSubarrayProblemSolver<Number: SignedNumeric & Comparable>: MaximumSubarrayProblemSolver {
     private let array: [Number]
-    private let evaluator: SubarrayEvaluator<Number>
 
-    init(input: [Number], evaluator: @escaping SubarrayEvaluator<Number>) {
+    init(input: [Number]) {
         array = input
-        self.evaluator = evaluator
     }
 
-    public func solveMaximumSubarrayProblem() -> Subarray<Number>? {
+    public func findMaximumSubarray() -> Subarray<Number>? {
         guard !array.isEmpty else { return nil }
 
-        var subarray: ArraySlice<Number>!
+        var low = 0
+        var high = 0
+        var maxSum = array[0]
+        var sum: Number = 0
         for i in 0..<array.count-1 {
+            sum = 0
             for j in i..<array.count {
-                let newSubarray = array[i...j]
-                if let oldSubarray = subarray {
-                    subarray = evaluator(oldSubarray, newSubarray)
-                } else {
-                    subarray = newSubarray
+                sum += array[j]
+                if sum > maxSum {
+                    maxSum = sum
+                    low = i
+                    high = j
                 }
             }
         }
 
-        return Subarray(low: subarray.startIndex, high: subarray.endIndex-1, sum: subarray.reduce(0, +))
+        return Subarray(low: low, high: high, sum: maxSum)
     }
 }

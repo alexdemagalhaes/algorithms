@@ -8,14 +8,12 @@
 
 public class DivideAndConquerMaximumSubarrayProblemSolver<Number: SignedNumeric & Comparable>: MaximumSubarrayProblemSolver {
     private let array: [Number]
-    private let evaluator: SubarrayEvaluator<Number>
 
-    init(input: [Number], evaluator: @escaping SubarrayEvaluator<Number>) {
+    init(input: [Number]) {
         array = input
-        self.evaluator = evaluator
     }
 
-    public func solveMaximumSubarrayProblem() -> Subarray<Number>? {
+    public func findMaximumSubarray() -> Subarray<Number>? {
         guard !array.isEmpty else { return nil }
 
         return findMaximumSubarray(low: 0, high: array.count-1)
