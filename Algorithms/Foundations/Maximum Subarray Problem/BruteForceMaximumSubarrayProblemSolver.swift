@@ -18,7 +18,7 @@ public class BruteForceMaximumSubarrayProblemSolver<Number: SignedNumeric & Comp
     public func solveMaximumSubarrayProblem() -> Subarray<Number>? {
         guard !array.isEmpty else { return nil }
 
-        var subarray: ArraySlice<Number>?
+        var subarray: ArraySlice<Number>!
         for i in 0..<array.count-1 {
             for j in i..<array.count {
                 let newSubarray = array[i...j]
@@ -30,10 +30,6 @@ public class BruteForceMaximumSubarrayProblemSolver<Number: SignedNumeric & Comp
             }
         }
 
-        if let subarray = subarray {
-            return Subarray(low: subarray.startIndex, high: subarray.endIndex-1, sum: subarray.reduce(0, +))
-        }
-
-        return nil
+        return Subarray(low: subarray.startIndex, high: subarray.endIndex-1, sum: subarray.reduce(0, +))
     }
 }

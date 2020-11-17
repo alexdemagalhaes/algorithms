@@ -27,14 +27,12 @@ public class BinarySearch<ComparableType: Comparable>: SearchAlgorithm {
 
         let q = (p + r) / 2
         switch value {
-        case let v where v == array[q]:
-            return q
         case let v where v < array[q]:
             return search(for: value, p: p, r: q)
         case let v where v > array[q]:
             return search(for: value, p: q + 1, r: r)
         default:
-            return nil
+            return q
         }
     }
 }

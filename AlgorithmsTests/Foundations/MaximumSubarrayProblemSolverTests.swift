@@ -51,4 +51,8 @@ final class MaximumSubarrayProblemSolverTests: XCTestCase {
         let maximumSubarray = Subarray(low: 2, high: 6, sum: 5)
         testMaximumSubarrayProblemAlgorithms(withInput: array, evaluator: volatileChemicalCorporationEvaluator, expectedOutput: maximumSubarray)
     }
+
+    func testMaximumProfitIsNilForEmptyArray() {
+        testMaximumSubarrayProblemAlgorithms(withInput: [], evaluator: volatileChemicalCorporationEvaluator, expectedOutput: nil)
+    }
 }

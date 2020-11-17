@@ -15,13 +15,12 @@ public final class MiscellaneousAlgorithms {
         var j = sortedArray.count - 1
         while i < j {
             switch sortedArray[i] + sortedArray[j] {
-            case let sum where sum == x:
-                return true
             case let sum where sum < x:
                 i += 1
             case let sum where sum > x:
                 j -= 1
-            default: break
+            default:
+                return true
             }
         }
         return false
