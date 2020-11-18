@@ -16,7 +16,8 @@ final class MaximumSubarrayProblemSolverTests: XCTestCase {
     ) {
         let algorithms: [(AnyMaximumSubarrayProblemSolver<Number>, Subarray<Number>?)] = [
             (AnyMaximumSubarrayProblemSolver(BruteForceMaximumSubarrayProblemSolver(input: input)), expectedOutput),
-            (AnyMaximumSubarrayProblemSolver(DivideAndConquerMaximumSubarrayProblemSolver(input: input)), expectedOutput)
+            (AnyMaximumSubarrayProblemSolver(DivideAndConquerMaximumSubarrayProblemSolver(input: input)), expectedOutput),
+            (AnyMaximumSubarrayProblemSolver(LinearTimeMaximumSubarrayProblemSolver(input: input)), expectedOutput)
         ]
         algorithms.forEach { (algorithm, expectedOutput) in
             XCTAssertEqual(algorithm.findMaximumSubarray(), expectedOutput)
