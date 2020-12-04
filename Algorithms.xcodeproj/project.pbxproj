@@ -10,6 +10,10 @@
 		7308113D252459BB0077FCB2 /* BubbleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7308113C252459BB0077FCB2 /* BubbleSort.swift */; };
 		731A1DD8254AB29700431BD2 /* MaximumSubarrayProblemSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731A1DD7254AB29700431BD2 /* MaximumSubarrayProblemSolver.swift */; };
 		731A1DDA254AB4F300431BD2 /* BruteForceMaximumSubarrayProblemSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731A1DD9254AB4F300431BD2 /* BruteForceMaximumSubarrayProblemSolver.swift */; };
+		732AD0E7257A3967000180DB /* CubicTimeSquareMatrixMultiplicationAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732AD0E6257A3967000180DB /* CubicTimeSquareMatrixMultiplicationAlgorithm.swift */; };
+		732AD0E9257A3E7F000180DB /* SquareMatrixMultiplicationAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732AD0E8257A3E7F000180DB /* SquareMatrixMultiplicationAlgorithmTests.swift */; };
+		735593962567BFA400B6019F /* SquareMatrixMultiplicationAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735593952567BFA300B6019F /* SquareMatrixMultiplicationAlgorithm.swift */; };
+		735593982567C1FA00B6019F /* SquareMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735593972567C1FA00B6019F /* SquareMatrix.swift */; };
 		7393610B24F6485700231592 /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393610A24F6485700231592 /* InsertionSort.swift */; };
 		7393611D24F65A9500231592 /* libAlgorithms.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7393610724F6485700231592 /* libAlgorithms.a */; };
 		739E07C7251B3AFA004C05BD /* SearchAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739E07C6251B3AFA004C05BD /* SearchAlgorithm.swift */; };
@@ -54,6 +58,10 @@
 		7308113C252459BB0077FCB2 /* BubbleSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSort.swift; sourceTree = "<group>"; };
 		731A1DD7254AB29700431BD2 /* MaximumSubarrayProblemSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaximumSubarrayProblemSolver.swift; sourceTree = "<group>"; };
 		731A1DD9254AB4F300431BD2 /* BruteForceMaximumSubarrayProblemSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForceMaximumSubarrayProblemSolver.swift; sourceTree = "<group>"; };
+		732AD0E6257A3967000180DB /* CubicTimeSquareMatrixMultiplicationAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubicTimeSquareMatrixMultiplicationAlgorithm.swift; sourceTree = "<group>"; };
+		732AD0E8257A3E7F000180DB /* SquareMatrixMultiplicationAlgorithmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareMatrixMultiplicationAlgorithmTests.swift; sourceTree = "<group>"; };
+		735593952567BFA300B6019F /* SquareMatrixMultiplicationAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareMatrixMultiplicationAlgorithm.swift; sourceTree = "<group>"; };
+		735593972567C1FA00B6019F /* SquareMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareMatrix.swift; sourceTree = "<group>"; };
 		7393610724F6485700231592 /* libAlgorithms.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAlgorithms.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7393610A24F6485700231592 /* InsertionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
 		7393611824F65A9500231592 /* AlgorithmsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlgorithmsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +112,16 @@
 			path = "Maximum Subarray Problem";
 			sourceTree = "<group>";
 		};
+		735593942567BF5E00B6019F /* Matrix */ = {
+			isa = PBXGroup;
+			children = (
+				735593972567C1FA00B6019F /* SquareMatrix.swift */,
+				735593952567BFA300B6019F /* SquareMatrixMultiplicationAlgorithm.swift */,
+				732AD0E6257A3967000180DB /* CubicTimeSquareMatrixMultiplicationAlgorithm.swift */,
+			);
+			path = Matrix;
+			sourceTree = "<group>";
+		};
 		739360FE24F6485600231592 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +153,7 @@
 			children = (
 				73A22AC6251B386500551DC0 /* Search */,
 				73A22AC5251B385A00551DC0 /* Sorting */,
+				735593942567BF5E00B6019F /* Matrix */,
 				731A1DD6254AB21B00431BD2 /* Maximum Subarray Problem */,
 				739E07FE25231A8D004C05BD /* Miscellaneous */,
 			);
@@ -158,6 +177,7 @@
 				73A22ABC2519D98100551DC0 /* SortingTests.swift */,
 				73F06CA1254AB6BE00C7B5AA /* MaximumSubarrayProblemSolverTests.swift */,
 				739E080125231E64004C05BD /* MiscellaneousTests.swift */,
+				732AD0E8257A3E7F000180DB /* SquareMatrixMultiplicationAlgorithmTests.swift */,
 			);
 			path = Foundations;
 			sourceTree = "<group>";
@@ -300,7 +320,10 @@
 				739E080025231B0A004C05BD /* MiscellaneousAlgorithms.swift in Sources */,
 				73DA202725651B2700EC8CEB /* LinearTimeMaximumSubarrayProblemSolver.swift in Sources */,
 				73A22AC22519E95D00551DC0 /* SortingAlgorithm.swift in Sources */,
+				735593962567BFA400B6019F /* SquareMatrixMultiplicationAlgorithm.swift in Sources */,
+				735593982567C1FA00B6019F /* SquareMatrix.swift in Sources */,
 				7393610B24F6485700231592 /* InsertionSort.swift in Sources */,
+				732AD0E7257A3967000180DB /* CubicTimeSquareMatrixMultiplicationAlgorithm.swift in Sources */,
 				7308113D252459BB0077FCB2 /* BubbleSort.swift in Sources */,
 				731A1DD8254AB29700431BD2 /* MaximumSubarrayProblemSolver.swift in Sources */,
 			);
@@ -313,6 +336,7 @@
 				739E07C9251B3B9D004C05BD /* SearchTests.swift in Sources */,
 				73A22AC02519E5C800551DC0 /* Numbers.swift in Sources */,
 				73F06CA2254AB6BE00C7B5AA /* MaximumSubarrayProblemSolverTests.swift in Sources */,
+				732AD0E9257A3E7F000180DB /* SquareMatrixMultiplicationAlgorithmTests.swift in Sources */,
 				739E080225231E64004C05BD /* MiscellaneousTests.swift in Sources */,
 				73A22ABD2519D98100551DC0 /* SortingTests.swift in Sources */,
 			);
