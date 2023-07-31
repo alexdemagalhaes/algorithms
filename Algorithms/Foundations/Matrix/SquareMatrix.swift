@@ -9,6 +9,13 @@
 import Foundation
 
 public struct SquareMatrix<Number: SignedNumeric & Comparable>: Equatable {
+    enum Error: Swift.Error {
+        case emptyDataArray
+        case matrixNotSquare
+        case indicesNotValid(row: Int, column: Int, matrixRows: Int)
+        case submatrixNotValid(row: Int, column: Int, submatrixRows: Int, matrixRows: Int)
+    }
+
     let rows: Int
     private var data: [Number]
 
@@ -17,14 +24,14 @@ public struct SquareMatrix<Number: SignedNumeric & Comparable>: Equatable {
         data = [Number](repeating: number, count: rows * rows)
     }
 
-    init?(data: [Number]) {
+    init(data: [Number]) throws {
         guard data.count > 0 else {
-            return nil
+            throw Error.emptyDataArray
         }
 
         let rows = sqrt(Double(data.count))
         guard rows == floor(rows) else {
-            return nil
+            throw Error.matrixNotSquare
         }
 
         self.rows = Int(rows)
@@ -33,33 +40,41 @@ public struct SquareMatrix<Number: SignedNumeric & Comparable>: Equatable {
 
     subscript(row: Int, column: Int) -> Number {
         get {
-            assert(indexIsValid(row: row, column: column), "Index out of range")
             return data[(row * rows) + column]
         }
         set {
-            assert(indexIsValid(row: row, column: column), "Index out of range")
             data[(row * rows) + column] = newValue
         }
     }
 
-    static func +(lhs: SquareMatrix<Number>, rhs: SquareMatrix<Number>) -> SquareMatrix<Number> {
-        assert(lhs.rows == rhs.rows)
-        let data = lhs.data.enumerated().map { index, element in element + rhs.data[index] }
-        return SquareMatrix(data: data)!
+    func at(row: Int, column: Int) throws -> Number {
+        try validateIndices(row: row, column: column)
+        return self[row, column]
     }
 
-    func quadrant(i: Int, j: Int, n: Int) -> SquareMatrix<Number> {
-        assert(submatrixIsValid(row: i, column: j, rows: n), "Submatrix out of range")
+    mutating func setAt(row: Int, column: Int, value: Number) throws {
+        try validateIndices(row: row, column: column)
+        self[row, column] = value
+    }
+
+    static func +(lhs: SquareMatrix<Number>, rhs: SquareMatrix<Number>) throws -> SquareMatrix<Number> {
+        assert(lhs.rows == rhs.rows)
+        let data = lhs.data.enumerated().map { index, element in element + rhs.data[index] }
+        return try SquareMatrix(data: data)
+    }
+
+    func quadrant(i: Int, j: Int, n: Int) throws -> SquareMatrix<Number> {
+        try validateSubmatrix(row: i, column: j, rows: n)
         var data = [Number]()
         for k in 0..<n {
             let firstIndex = (((i * n) + k) * self.rows) + (j * n)
             data.append(contentsOf: self.data.suffix(from: firstIndex).prefix(n))
         }
-        return SquareMatrix(data: data)!
+        return try SquareMatrix(data: data)
     }
 
-    mutating func setQuadrant(i: Int, j: Int, n: Int, matrix: SquareMatrix<Number>) {
-        assert(submatrixIsValid(row: i, column: j, rows: n), "Submatrix out of range")
+    mutating func setQuadrant(i: Int, j: Int, n: Int, matrix: SquareMatrix<Number>) throws {
+        try validateSubmatrix(row: i, column: j, rows: n)
         for k in 0..<n {
             let rowIndex = (i * n) + k
             for l in 0..<n {
@@ -69,11 +84,16 @@ public struct SquareMatrix<Number: SignedNumeric & Comparable>: Equatable {
         }
     }
 
-    private func indexIsValid(row: Int, column: Int) -> Bool {
-        return row >= 0 && row < rows && column >= 0 && column < rows
+    private func validateIndices(row: Int, column: Int) throws {
+        guard row >= 0 && row < rows && column >= 0 && column < rows else {
+            throw Error.indicesNotValid(row: row, column: column, matrixRows: rows)
+        }
     }
 
-    private func submatrixIsValid(row: Int, column: Int, rows: Int) -> Bool {
-        return row * rows >= 0 && row * rows < self.rows && column * rows >= 0 && column * rows < self.rows
+    private func validateSubmatrix(row: Int, column: Int, rows: Int) throws {
+        guard row * rows >= 0 && row * rows < self.rows &&
+                column * rows >= 0 && column * rows < self.rows else {
+            throw Error.submatrixNotValid(row: row, column: column, submatrixRows: rows, matrixRows: self.rows)
+        }
     }
 }
