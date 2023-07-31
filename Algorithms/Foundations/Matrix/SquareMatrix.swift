@@ -14,6 +14,7 @@ public struct SquareMatrix<Number: SignedNumeric & Comparable>: Equatable {
         case matrixNotSquare
         case indicesNotValid(row: Int, column: Int, matrixRows: Int)
         case submatrixNotValid(row: Int, column: Int, submatrixRows: Int, matrixRows: Int)
+        case dimensionMismatch
     }
 
     let rows: Int
@@ -58,8 +59,18 @@ public struct SquareMatrix<Number: SignedNumeric & Comparable>: Equatable {
     }
 
     static func +(lhs: SquareMatrix<Number>, rhs: SquareMatrix<Number>) throws -> SquareMatrix<Number> {
-        assert(lhs.rows == rhs.rows)
+        guard lhs.rows == rhs.rows else {
+            throw Error.dimensionMismatch
+        }
         let data = lhs.data.enumerated().map { index, element in element + rhs.data[index] }
+        return try SquareMatrix(data: data)
+    }
+
+    static func -(lhs: SquareMatrix<Number>, rhs: SquareMatrix<Number>) throws -> SquareMatrix<Number> {
+        guard lhs.rows == rhs.rows else {
+            throw Error.dimensionMismatch
+        }
+        let data = lhs.data.enumerated().map { index, element in element - rhs.data[index] }
         return try SquareMatrix(data: data)
     }
 

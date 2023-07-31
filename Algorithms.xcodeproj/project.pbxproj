@@ -13,6 +13,7 @@
 		732AD0E7257A3967000180DB /* CubicTimeSquareMatrixMultiplicationAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732AD0E6257A3967000180DB /* CubicTimeSquareMatrixMultiplicationAlgorithm.swift */; };
 		732AD0E9257A3E7F000180DB /* SquareMatrixMultiplicationAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732AD0E8257A3E7F000180DB /* SquareMatrixMultiplicationAlgorithmTests.swift */; };
 		733956E22A7476FA007E8778 /* DivideAndConquerSquareMatrixMultiplicationAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733956E12A7476FA007E8778 /* DivideAndConquerSquareMatrixMultiplicationAlgorithm.swift */; };
+		733956E42A787A9E007E8778 /* StrassenSquareMatrixMultiplicationAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733956E32A787A9E007E8778 /* StrassenSquareMatrixMultiplicationAlgorithm.swift */; };
 		735593962567BFA400B6019F /* SquareMatrixMultiplicationAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735593952567BFA300B6019F /* SquareMatrixMultiplicationAlgorithm.swift */; };
 		735593982567C1FA00B6019F /* SquareMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735593972567C1FA00B6019F /* SquareMatrix.swift */; };
 		7393610B24F6485700231592 /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393610A24F6485700231592 /* InsertionSort.swift */; };
@@ -62,6 +63,7 @@
 		732AD0E6257A3967000180DB /* CubicTimeSquareMatrixMultiplicationAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubicTimeSquareMatrixMultiplicationAlgorithm.swift; sourceTree = "<group>"; };
 		732AD0E8257A3E7F000180DB /* SquareMatrixMultiplicationAlgorithmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareMatrixMultiplicationAlgorithmTests.swift; sourceTree = "<group>"; };
 		733956E12A7476FA007E8778 /* DivideAndConquerSquareMatrixMultiplicationAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivideAndConquerSquareMatrixMultiplicationAlgorithm.swift; sourceTree = "<group>"; };
+		733956E32A787A9E007E8778 /* StrassenSquareMatrixMultiplicationAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrassenSquareMatrixMultiplicationAlgorithm.swift; sourceTree = "<group>"; };
 		735593952567BFA300B6019F /* SquareMatrixMultiplicationAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareMatrixMultiplicationAlgorithm.swift; sourceTree = "<group>"; };
 		735593972567C1FA00B6019F /* SquareMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareMatrix.swift; sourceTree = "<group>"; };
 		7393610724F6485700231592 /* libAlgorithms.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAlgorithms.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +123,7 @@
 				735593952567BFA300B6019F /* SquareMatrixMultiplicationAlgorithm.swift */,
 				732AD0E6257A3967000180DB /* CubicTimeSquareMatrixMultiplicationAlgorithm.swift */,
 				733956E12A7476FA007E8778 /* DivideAndConquerSquareMatrixMultiplicationAlgorithm.swift */,
+				733956E32A787A9E007E8778 /* StrassenSquareMatrixMultiplicationAlgorithm.swift */,
 			);
 			path = Matrix;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				73A22AC4251B385600551DC0 /* LinearSearch.swift in Sources */,
 				739E07CD251C7B4D004C05BD /* BinarySearch.swift in Sources */,
 				739E080025231B0A004C05BD /* MiscellaneousAlgorithms.swift in Sources */,
+				733956E42A787A9E007E8778 /* StrassenSquareMatrixMultiplicationAlgorithm.swift in Sources */,
 				73DA202725651B2700EC8CEB /* LinearTimeMaximumSubarrayProblemSolver.swift in Sources */,
 				73A22AC22519E95D00551DC0 /* SortingAlgorithm.swift in Sources */,
 				735593962567BFA400B6019F /* SquareMatrixMultiplicationAlgorithm.swift in Sources */,

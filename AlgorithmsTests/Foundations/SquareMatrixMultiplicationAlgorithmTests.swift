@@ -17,7 +17,8 @@ final class SquareMatrixMultiplicationAlgorithmTests: XCTestCase {
     ) {
         let algorithms: [(AnyMatrixMultiplicationAlgorithm<Number>, SquareMatrix<Number>?)] = [
             (AnyMatrixMultiplicationAlgorithm(CubicTimeSquareMatrixMultiplicationAlgorithm(a: a, b: b)), expectedOutput),
-            (AnyMatrixMultiplicationAlgorithm(DivideAndConquerSquareMatrixMultiplicationAlgorithm(a: a, b: b)), expectedOutput)
+            (AnyMatrixMultiplicationAlgorithm(DivideAndConquerSquareMatrixMultiplicationAlgorithm(a: a, b: b)), expectedOutput),
+            (AnyMatrixMultiplicationAlgorithm(StrassenSquareMatrixMultiplicationAlgorithm(a: a, b: b)), expectedOutput)
         ]
         do {
             try algorithms.forEach { (algorithm, expectedOutput) in
