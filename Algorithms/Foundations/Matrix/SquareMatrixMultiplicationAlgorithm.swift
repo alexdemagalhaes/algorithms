@@ -9,17 +9,17 @@
 public protocol SquareMatrixMultiplicationAlgorithm {
     associatedtype Number: SignedNumeric & Comparable
 
-    func multiplyMatrices() throws -> SquareMatrix<Number>?
+    func multiplyMatrices() -> SquareMatrix<Number>?
 }
 
 struct AnyMatrixMultiplicationAlgorithm<Number: SignedNumeric & Comparable> {
-    private let multiplyMatricesMethod: () throws -> SquareMatrix<Number>?
+    private let multiplyMatricesMethod: () -> SquareMatrix<Number>?
 
     init<Algorithm: SquareMatrixMultiplicationAlgorithm>(_ algorithm: Algorithm) where Algorithm.Number == Number {
         self.multiplyMatricesMethod = algorithm.multiplyMatrices
     }
 
-    func multiplyMatrices() throws -> SquareMatrix<Number>? {
-        return try multiplyMatricesMethod()
+    func multiplyMatrices() -> SquareMatrix<Number>? {
+        return multiplyMatricesMethod()
     }
 }
