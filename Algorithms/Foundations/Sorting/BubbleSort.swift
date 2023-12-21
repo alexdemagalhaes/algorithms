@@ -9,7 +9,7 @@
 public final class BubbleSort<ComparableType: Comparable>: SortingAlgorithm {
     private var array: [ComparableType]
 
-    init(input: [ComparableType]) {
+    public init(input: [ComparableType]) {
         array = input
     }
 

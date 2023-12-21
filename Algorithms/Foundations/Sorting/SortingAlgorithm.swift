@@ -9,6 +9,7 @@
 public protocol SortingAlgorithm {
     associatedtype ComparableType: Comparable
     
+    init(input: [ComparableType])
     func sort() -> [ComparableType]
 }
 

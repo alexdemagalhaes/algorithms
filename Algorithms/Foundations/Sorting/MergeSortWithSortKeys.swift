@@ -6,14 +6,16 @@
 //  Copyright © 2020 Alex Machado. All rights reserved.
 //
 
-public final class MergeSort<ComparableType: Comparable>: SortingAlgorithm {
-    private var array: [ComparableType]
+public final class MergeSortWithSortKeys<ElementType, ComparableType: Comparable>: SortingWithSortKeysAlgorithm {
+    private var array: [ElementType]
+    private var sortKeys: [ComparableType]
 
-    public init(input: [ComparableType]) {
+    public init(input: [ElementType], sortKeys: [ComparableType]) {
         array = input
+        self.sortKeys = sortKeys
     }
 
-    public func sort() -> [ComparableType] {
+    public func sort() -> [ElementType] {
         mergeSort(p: 0, r: array.count)
         return array
     }
@@ -27,6 +29,8 @@ public final class MergeSort<ComparableType: Comparable>: SortingAlgorithm {
     }
 
     private func merge(p: Int, q: Int, r: Int) {
+        let leftSortKeys = sortKeys[p..<q]
+        let rightSortKeys = sortKeys[q..<r]
         let left = array[p..<q]
         let right = array[q..<r]
 
@@ -34,11 +38,13 @@ public final class MergeSort<ComparableType: Comparable>: SortingAlgorithm {
         var j = q
         var k = p
         while i < q && j < r {
-            if left[i] <= right[j] {
+            if leftSortKeys[i] <= rightSortKeys[j] {
                 array[k] = left[i]
+                sortKeys[k] = leftSortKeys[i]
                 i += 1
             } else {
                 array[k] = right[j]
+                sortKeys[k] = rightSortKeys[j]
                 j += 1
             }
             k += 1
@@ -46,12 +52,14 @@ public final class MergeSort<ComparableType: Comparable>: SortingAlgorithm {
 
         while i < q {
             array[k] = left[i]
+            sortKeys[k] = leftSortKeys[i]
             i += 1
             k += 1
         }
 
         while j < r {
             array[k] = right[j]
+            sortKeys[k] = rightSortKeys[j]
             j += 1
             k += 1
         }

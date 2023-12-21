@@ -9,7 +9,7 @@
 public final class SelectionSort<ComparableType: Comparable>: SortingAlgorithm {
     private var array: [ComparableType]
 
-    init(input: [ComparableType]) {
+    public init(input: [ComparableType]) {
         array = input
     }
 
