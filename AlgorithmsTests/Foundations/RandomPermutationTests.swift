@@ -13,6 +13,27 @@ private struct TestElement {
     let value: String
 }
 
+final class RandomPermutationTests: XCTestCase {
+    private func testRandomPermutationAlgorithms<ElementType: Comparable>(
+        input: [ElementType]
+    ) {
+        let sortedInput = input.sorted()
+        let algorithms: [any RandomPermutationAlgorithm] = [
+            PermuteBySortingAlgorithm(input: input),
+            RandomizeInPlaceAlgorithm(input: input)
+        ]
+        algorithms.forEach { algorithm in
+            let randomizedOutput = algorithm.permute().map { $0 as! ElementType }
+            let sortedOutput = randomizedOutput.sorted()
+            XCTAssertEqual(sortedInput, sortedOutput)
+        }
+    }
+
+    func testArrayStillContainsTheSameElements() {
+        testRandomPermutationAlgorithms(input: Numbers.thousandRandomNumbers)
+    }
+}
+
 final class PermuteBySortingAlgorithmTests: XCTestCase {
     private func testPermutation(withInput input: [TestElement]) {
         let algorithm = PermuteBySortingAlgorithm(input: input)
