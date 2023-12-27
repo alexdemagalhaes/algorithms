@@ -9,7 +9,7 @@
 public class LinearSearch<ComparableType: Comparable>: SearchAlgorithm {
     private let array: [ComparableType]
 
-    init(input: [ComparableType]) {
+    required public init(input: [ComparableType]) {
         array = input
     }
 

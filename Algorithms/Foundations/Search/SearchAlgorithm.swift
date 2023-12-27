@@ -9,6 +9,7 @@
 public protocol SearchAlgorithm {
     associatedtype ComparableType: Comparable
 
+    init(input: [ComparableType])
     func search(for value: ComparableType) -> Int?
 }
 

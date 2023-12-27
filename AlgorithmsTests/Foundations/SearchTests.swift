@@ -10,10 +10,14 @@
 import XCTest
 
 final class SearchTests: XCTestCase {
-    private func testSearchAlgorithms<ComparableType: Comparable>(withInput input: [ComparableType], value: ComparableType) {
+    private func testSearchAlgorithms<ComparableType: Comparable>(
+        withInput input: [ComparableType],
+        value: ComparableType
+    ) {
         let algorithms: [(AnySearchAlgorithm<ComparableType>, Int?)] = [
             (AnySearchAlgorithm(LinearSearch(input: input)), input.firstIndex(of: value)),
-            (AnySearchAlgorithm(BinarySearch(input: input.sorted())), input.sorted().firstIndex(of: value))
+            (AnySearchAlgorithm(BinarySearch(input: input.sorted())), input.sorted().firstIndex(of: value)),
+            (AnySearchAlgorithm(RandomSearch(input: input)), input.firstIndex(of: value))
         ]
         algorithms.forEach { (algorithm, expectedIndex) in
             XCTAssertEqual(algorithm.search(for: value), expectedIndex)
