@@ -6,12 +6,6 @@
 //  Copyright © 2020 Alex Machado. All rights reserved.
 //
 
-public struct Subarray<Number: SignedNumeric & Comparable>: Equatable {
-    let low: Int
-    let high: Int
-    let sum: Number
-}
-
 public protocol MaximumSubarrayProblemSolver {
     associatedtype Number: SignedNumeric & Comparable
 

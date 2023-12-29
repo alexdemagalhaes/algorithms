@@ -9,29 +9,6 @@
 import Foundation
 
 public struct SquareMatrix<Number: SignedNumeric & Comparable>: Equatable {
-    enum Error: Swift.Error {
-        case emptyDataArray
-        case matrixNotSquare
-        case indicesNotValid(row: Int, column: Int, matrixRows: Int)
-        case submatrixNotValid(row: Int, column: Int, submatrixRows: Int, matrixRows: Int)
-        case dimensionMismatch
-
-        var message: String {
-            switch self {
-            case .emptyDataArray:
-                return "Data array cannot be empty"
-            case .matrixNotSquare:
-                return "Matrix must be square"
-            case .indicesNotValid(let row, let column, let matrixRows):
-                return "\(row) and \(column) must both be >= 0 and < \(matrixRows)"
-            case .submatrixNotValid(let row, let column, let submatrixRows, let matrixRows):
-                return "\(row * submatrixRows) and \(column * submatrixRows) must both be >= 0 and < \(matrixRows)"
-            case .dimensionMismatch:
-                return "Matrices must have same dimensions"
-            }
-        }
-    }
-
     let rows: Int
     private var data: [Number]
 
@@ -41,14 +18,10 @@ public struct SquareMatrix<Number: SignedNumeric & Comparable>: Equatable {
     }
 
     init(data: [Number]) {
-        guard data.count > 0 else {
-            fatalError(Error.emptyDataArray.message)
-        }
+        precondition(data.count > 0)
 
         let rows = sqrt(Double(data.count))
-        guard rows == floor(rows) else {
-            fatalError(Error.matrixNotSquare.message)
-        }
+        precondition(rows == floor(rows))
 
         self.rows = Int(rows)
         self.data = data
@@ -66,17 +39,13 @@ public struct SquareMatrix<Number: SignedNumeric & Comparable>: Equatable {
     }
 
     static func +(lhs: SquareMatrix<Number>, rhs: SquareMatrix<Number>) -> SquareMatrix<Number> {
-        guard lhs.rows == rhs.rows else {
-            fatalError(Error.dimensionMismatch.message)
-        }
+        precondition(lhs.rows == rhs.rows)
         let data = lhs.data.enumerated().map { index, element in element + rhs.data[index] }
         return SquareMatrix(data: data)
     }
 
     static func -(lhs: SquareMatrix<Number>, rhs: SquareMatrix<Number>) -> SquareMatrix<Number> {
-        guard lhs.rows == rhs.rows else {
-            fatalError(Error.dimensionMismatch.message)
-        }
+        precondition(lhs.rows == rhs.rows)
         let data = lhs.data.enumerated().map { index, element in element - rhs.data[index] }
         return SquareMatrix(data: data)
     }
@@ -103,15 +72,11 @@ public struct SquareMatrix<Number: SignedNumeric & Comparable>: Equatable {
     }
 
     private func validateIndices(row: Int, column: Int) {
-        guard row >= 0 && row < rows && column >= 0 && column < rows else {
-            fatalError(Error.indicesNotValid(row: row, column: column, matrixRows: rows).message)
-        }
+        precondition(row >= 0 && row < rows && column >= 0 && column < rows)
     }
 
     private func validateSubmatrix(row: Int, column: Int, rows: Int) {
-        guard row * rows >= 0 && row * rows < self.rows &&
-                column * rows >= 0 && column * rows < self.rows else {
-            fatalError(Error.submatrixNotValid(row: row, column: column, submatrixRows: rows, matrixRows: self.rows).message)
-        }
+        precondition(row * rows >= 0 && row * rows < self.rows &&
+                     column * rows >= 0 && column * rows < self.rows)
     }
 }
