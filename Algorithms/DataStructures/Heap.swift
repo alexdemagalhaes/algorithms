@@ -13,14 +13,19 @@ public struct Heap<ComparableType: Comparable> {
 
     public init(array: [ComparableType]) {
         self.array = array
+        heapSize = array.count
     }
 
+    public var heapSize: Int
+    public var length: Int {
+        array.count
+    }
     public var heapArray: [ComparableType] {
         array
     }
 
-    public var heapSize: Int {
-        array.count
+    public mutating func swapAt(_ i: Int, _ j: Int) {
+        array.swapAt(i, j)
     }
 
     /// Assumes the binary trees rooted at left and right are max-heaps,
@@ -90,6 +95,20 @@ public struct Heap<ComparableType: Comparable> {
             }
             array.swapAt(i, largest)
             i = largest
+        }
+    }
+
+    public mutating func buildMaxHeap() {
+        let nonLeafNodeCount = heapSize/2
+        for i in (0..<nonLeafNodeCount).reversed() {
+            maxHeapify(i: i)
+        }
+    }
+
+    public mutating func buildMinHeap() {
+        let nonLeafNodeCount = heapSize/2
+        for i in (0..<nonLeafNodeCount).reversed() {
+            minHeapify(i: i)
         }
     }
 }
