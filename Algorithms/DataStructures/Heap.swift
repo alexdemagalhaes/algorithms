@@ -11,17 +11,43 @@ import Foundation
 public struct Heap<ComparableType: Comparable> {
     private var array: [ComparableType]
 
-    public init(array: [ComparableType]) {
-        self.array = array
+    public init(input: any Sequence<ComparableType>) {
+        array = Array(input)
         heapSize = array.count
     }
 
     public var heapSize: Int
+
     public var length: Int {
         array.count
     }
+
     public var heapArray: [ComparableType] {
         array
+    }
+
+    /// Assumes heapSize is less than or equal to length
+    public var heapElements: ArraySlice<ComparableType> {
+        array[0..<heapSize]
+    }
+
+    /// Assumes the heap is a max-heap and it's not empty
+    public var maximum: ComparableType {
+        array[0]
+    }
+
+    // Assumes i is not the root
+    private func parent(i: Int) -> Int {
+        (i - 1) / 2
+    }
+
+    /// Assumes the heap is a max-heap and it's not empty
+    public mutating func extractMax() -> ComparableType {
+        let max = array[0]
+        array[0] = array[heapSize-1]
+        heapSize -= 1
+        maxHeapify()
+        return max
     }
 
     public mutating func swapAt(_ i: Int, _ j: Int) {
@@ -111,4 +137,31 @@ public struct Heap<ComparableType: Comparable> {
             minHeapify(i: i)
         }
     }
+
+    /// Assumes i is within bounds of the array. Does nothing if key is not greater than the current element at index i.
+    public mutating func increaseKey(i initialIndex: Int, key: ComparableType) {
+        var i = initialIndex
+        guard key >= array[i] else {
+            return
+        }
+
+        array[i] = key
+        while i > 0 && array[parent(i: i)] < array[i] {
+            array.swapAt(i, parent(i: i))
+            i = parent(i: i)
+        }
+    }
+
+    /// Assumes heap does not currently contain the new key
+    public mutating func maxInsert(key: ComparableType) {
+        var i = heapSize
+        heapSize += 1
+        array.insert(key, at: i)
+
+        while i > 0 && array[parent(i: i)] < array[i] {
+            array.swapAt(i, parent(i: i))
+            i = parent(i: i)
+        }
+    }
+
 }

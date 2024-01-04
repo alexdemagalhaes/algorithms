@@ -10,11 +10,11 @@ public final class HeapSort<ComparableType: Comparable>: SortingAlgorithm {
     private var heap: Heap<ComparableType>
 
     public init(input: [ComparableType]) {
-        heap = Heap(array: input)
+        heap = Heap(input: input)
     }
 
     public func sort() -> [ComparableType] {
-        guard heap.length > 0 else { return heap.heapArray }
+        guard heap.length > 0 else { return [] }
         heap.buildMaxHeap()
         for i in (1..<heap.length).reversed() {
             heap.swapAt(0, i)
