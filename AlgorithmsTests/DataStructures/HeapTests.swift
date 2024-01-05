@@ -28,6 +28,12 @@ final class HeapTests: XCTestCase {
         XCTAssertEqual(heap.maximum, 16)
     }
 
+    func testMinimum() {
+        var heap = Heap(input: [4, 1, 3, 2, 16, 9, 10, 14, 8, 7])
+        heap.buildMinHeap()
+        XCTAssertEqual(heap.minimum, 1)
+    }
+
     func testMaxHeapify() {
         var heap = Heap(input: [-1, 17, 10, 16, 13, 9, 1, 5, 7, 12, 4, 8, 3, 0])
         heap.maxHeapify()
@@ -133,6 +139,20 @@ final class HeapTests: XCTestCase {
         XCTAssertEqual(heap.heapElements, [])
     }
 
+    func testExtractMin() {
+        var heap = Heap(input: [10, 15, 16, 25, 20, 21, 47, 35, 30, 40, 50, 45, 60])
+        XCTAssertEqual(heap.extractMin(), 10)
+        XCTAssertEqual(heap.heapElements, [15, 20, 16, 25, 40, 21, 47, 35, 30, 60, 50, 45])
+    }
+
+    func testExtractMinUntilHeapIsEmpty() {
+        var heap = Heap(input: [23, 30, 28])
+        XCTAssertEqual(heap.extractMin(), 23)
+        XCTAssertEqual(heap.extractMin(), 28)
+        XCTAssertEqual(heap.extractMin(), 30)
+        XCTAssertEqual(heap.heapElements, [])
+    }
+
     func testIncreaseKey() {
         var heap = Heap(input: [15, 13, 9])
         heap.increaseKey(i: 2, key: 16)
@@ -151,6 +171,24 @@ final class HeapTests: XCTestCase {
         XCTAssertEqual(heap.heapArray, [15, 13, 9, 5, 12, 8, 7, 4, 0, 6, 2, 1])
     }
 
+    func testDecreaseKey() {
+        var heap = Heap(input: [23, 30, 28])
+        heap.decreaseKey(i: 1, key: 20)
+        XCTAssertEqual(heap.heapElements, [20, 23, 28])
+    }
+
+    func testDecreaseKeyMultiLevel() {
+        var heap = Heap(input: [-1, 4, 0, 5, 12, 3, 1, 16, 7, 17, 13, 8, 9, 10])
+        heap.decreaseKey(i: 11, key: -8)
+        XCTAssertEqual(heap.heapElements, [-8, 4, -1, 5, 12, 0, 1, 16, 7, 17, 13, 3, 9, 10])
+    }
+
+    func testDecreaseKeyGreaterThanCurrent() {
+        var heap = Heap(input: [-1, 4, 0, 5, 12, 3, 1, 16, 7, 17, 13, 8, 9, 10])
+        heap.decreaseKey(i: 11, key: 9)
+        XCTAssertEqual(heap.heapArray, [-1, 4, 0, 5, 12, 3, 1, 16, 7, 17, 13, 8, 9, 10])
+    }
+
     func testMaxInsert() {
         var heap = Heap(input: [15, 13, 9, 5, 12, 8, 7, 4, 0, 6, 2, 1])
         heap.maxInsert(key: 10)
@@ -162,5 +200,18 @@ final class HeapTests: XCTestCase {
         heap.maxInsert(key: -10)
         heap.increaseKey(i: 12, key: 10)
         XCTAssertEqual(heap.heapElements, [15, 13, 10, 5, 12, 9, 7, 4, 0, 6, 2, 1, 8])
+    }
+
+    func testMinInsert() {
+        var heap = Heap(input: [10, 15, 16, 25, 20, 21, 47, 35, 30, 40, 50, 45, 60])
+        heap.minInsert(key: 5)
+        XCTAssertEqual(heap.heapElements, [5, 15, 10, 25, 20, 21, 16, 35, 30, 40, 50, 45, 60, 47])
+    }
+
+    func testMinInsertUsingDecreaseKey() {
+        var heap = Heap(input: [10, 15, 16, 25, 20, 21, 47, 35, 30, 40, 50, 45, 60])
+        heap.minInsert(key: 70)
+        heap.decreaseKey(i: 13, key: 5)
+        XCTAssertEqual(heap.heapElements, [5, 15, 10, 25, 20, 21, 16, 35, 30, 40, 50, 45, 60, 47])
     }
 }

@@ -36,6 +36,11 @@ public struct Heap<ComparableType: Comparable> {
         array[0]
     }
 
+    /// Assumes the heap is a min-heap and it's not empty
+    public var minimum: ComparableType {
+        array[0]
+    }
+
     // Assumes i is not the root
     private func parent(i: Int) -> Int {
         (i - 1) / 2
@@ -48,6 +53,15 @@ public struct Heap<ComparableType: Comparable> {
         heapSize -= 1
         maxHeapify()
         return max
+    }
+
+    /// Assumes the heap is a min-heap and it's not empty
+    public mutating func extractMin() -> ComparableType {
+        let min = array[0]
+        array[0] = array[heapSize-1]
+        heapSize -= 1
+        minHeapify()
+        return min
     }
 
     public mutating func swapAt(_ i: Int, _ j: Int) {
@@ -152,6 +166,20 @@ public struct Heap<ComparableType: Comparable> {
         }
     }
 
+    /// Assumes i is within bounds of the array. Does nothing if key is not less than the current element at index i.
+    public mutating func decreaseKey(i initialIndex: Int, key: ComparableType) {
+        var i = initialIndex
+        guard key <= array[i] else {
+            return
+        }
+
+        array[i] = key
+        while i > 0 && array[parent(i: i)] > array[i] {
+            array.swapAt(i, parent(i: i))
+            i = parent(i: i)
+        }
+    }
+
     /// Assumes heap does not currently contain the new key
     public mutating func maxInsert(key: ComparableType) {
         var i = heapSize
@@ -164,4 +192,15 @@ public struct Heap<ComparableType: Comparable> {
         }
     }
 
+    /// Assumes heap does not currently contain the new key
+    public mutating func minInsert(key: ComparableType) {
+        var i = heapSize
+        heapSize += 1
+        array.insert(key, at: i)
+
+        while i > 0 && array[parent(i: i)] > array[i] {
+            array.swapAt(i, parent(i: i))
+            i = parent(i: i)
+        }
+    }
 }
