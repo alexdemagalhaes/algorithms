@@ -159,11 +159,11 @@ public struct Heap<ComparableType: Comparable> {
             return
         }
 
-        array[i] = key
-        while i > 0 && array[parent(i: i)] < array[i] {
-            array.swapAt(i, parent(i: i))
+        while i > 0 && array[parent(i: i)] < key {
+            array[i] = array[parent(i: i)]
             i = parent(i: i)
         }
+        array[i] = key
     }
 
     /// Assumes i is within bounds of the array. Does nothing if key is not less than the current element at index i.
@@ -173,11 +173,11 @@ public struct Heap<ComparableType: Comparable> {
             return
         }
 
-        array[i] = key
-        while i > 0 && array[parent(i: i)] > array[i] {
-            array.swapAt(i, parent(i: i))
+        while i > 0 && array[parent(i: i)] > key {
+            array[i] = array[parent(i: i)]
             i = parent(i: i)
         }
+        array[i] = key
     }
 
     /// Assumes heap does not currently contain the new key
