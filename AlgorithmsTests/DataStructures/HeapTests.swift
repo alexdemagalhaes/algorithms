@@ -214,4 +214,26 @@ final class HeapTests: XCTestCase {
         heap.decreaseKey(i: 13, key: 5)
         XCTAssertEqual(heap.heapElements, [5, 15, 10, 25, 20, 21, 16, 35, 30, 40, 50, 45, 60, 47])
     }
+
+    func testDeleteMultipleNodes() {
+        var heap = Heap(input: [15, 13, 9, 5, 12, 8, 7, 4, 0, 6, 2, 1])
+        heap.delete(i: 4)
+        XCTAssertEqual(heap.heapElements, [15, 13, 9, 5, 6, 8, 7, 4, 0, 1, 2])
+        heap.delete(i: 7)
+        XCTAssertEqual(heap.heapElements, [15, 13, 9, 5, 6, 8, 7, 2, 0, 1])
+        heap.delete(i: 6)
+        XCTAssertEqual(heap.heapElements, [15, 13, 9, 5, 6, 8, 1, 2, 0])
+    }
+
+    func testDeleteLeaf() {
+        var heap = Heap(input: [15, 13, 9, 5, 12, 8, 7, 4, 0, 6, 2, 1])
+        heap.delete(i: 7)
+        XCTAssertEqual(heap.heapElements, [15, 13, 9, 5, 12, 8, 7, 1, 0, 6, 2])
+    }
+
+    func testDeleteRoot() {
+        var heap = Heap(input: [15, 13, 9, 5, 12, 8, 7, 4, 0, 6, 2, 1])
+        heap.delete(i: 0)
+        XCTAssertEqual(heap.heapElements, [13, 12, 9, 5, 6, 8, 7, 4, 0, 1, 2])
+    }
 }

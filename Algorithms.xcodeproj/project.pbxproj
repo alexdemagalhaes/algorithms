@@ -46,6 +46,10 @@
 		73AE932D2B48C983007A6B33 /* StackWithPriorityQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AE932C2B48C983007A6B33 /* StackWithPriorityQueueTests.swift */; };
 		73AE932F2B48CC13007A6B33 /* QueueWithPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AE932E2B48CC13007A6B33 /* QueueWithPriorityQueue.swift */; };
 		73AE93312B48CCA6007A6B33 /* QueueWithPriorityQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AE93302B48CCA6007A6B33 /* QueueWithPriorityQueueTests.swift */; };
+		73AE93332B4CE5F1007A6B33 /* YoungTableau.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AE93322B4CE5F1007A6B33 /* YoungTableau.swift */; };
+		73AE93352B4F3558007A6B33 /* YoungTableauTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AE93342B4F3558007A6B33 /* YoungTableauTests.swift */; };
+		73AE93372B4F4FFF007A6B33 /* CubicYoungTableauSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AE93362B4F4FFF007A6B33 /* CubicYoungTableauSort.swift */; };
+		73AE93392B4F54AE007A6B33 /* CubicYoungTableauSortTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AE93382B4F54AE007A6B33 /* CubicYoungTableauSortTests.swift */; };
 		73C7B73724F79D5B00EE5275 /* SelectionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7B73624F79D5B00EE5275 /* SelectionSort.swift */; };
 		73DA2025255E777200EC8CEB /* DivideAndConquerMaximumSubarrayProblemSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DA2024255E777200EC8CEB /* DivideAndConquerMaximumSubarrayProblemSolver.swift */; };
 		73DA202725651B2700EC8CEB /* LinearTimeMaximumSubarrayProblemSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DA202625651B2700EC8CEB /* LinearTimeMaximumSubarrayProblemSolver.swift */; };
@@ -116,6 +120,10 @@
 		73AE932C2B48C983007A6B33 /* StackWithPriorityQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackWithPriorityQueueTests.swift; sourceTree = "<group>"; };
 		73AE932E2B48CC13007A6B33 /* QueueWithPriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithPriorityQueue.swift; sourceTree = "<group>"; };
 		73AE93302B48CCA6007A6B33 /* QueueWithPriorityQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithPriorityQueueTests.swift; sourceTree = "<group>"; };
+		73AE93322B4CE5F1007A6B33 /* YoungTableau.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoungTableau.swift; sourceTree = "<group>"; };
+		73AE93342B4F3558007A6B33 /* YoungTableauTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoungTableauTests.swift; sourceTree = "<group>"; };
+		73AE93362B4F4FFF007A6B33 /* CubicYoungTableauSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubicYoungTableauSort.swift; sourceTree = "<group>"; };
+		73AE93382B4F54AE007A6B33 /* CubicYoungTableauSortTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubicYoungTableauSortTests.swift; sourceTree = "<group>"; };
 		73C7B73624F79D5B00EE5275 /* SelectionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSort.swift; sourceTree = "<group>"; };
 		73DA2024255E777200EC8CEB /* DivideAndConquerMaximumSubarrayProblemSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivideAndConquerMaximumSubarrayProblemSolver.swift; sourceTree = "<group>"; };
 		73DA202625651B2700EC8CEB /* LinearTimeMaximumSubarrayProblemSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearTimeMaximumSubarrayProblemSolver.swift; sourceTree = "<group>"; };
@@ -198,6 +206,7 @@
 				73860C052B3F933500FAD4BA /* Subarray.swift */,
 				73AE932A2B48C6EF007A6B33 /* StackWithPriorityQueue.swift */,
 				73AE932E2B48CC13007A6B33 /* QueueWithPriorityQueue.swift */,
+				73AE93322B4CE5F1007A6B33 /* YoungTableau.swift */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -208,6 +217,7 @@
 				73860C032B3F891900FAD4BA /* HeapTests.swift */,
 				73AE932C2B48C983007A6B33 /* StackWithPriorityQueueTests.swift */,
 				73AE93302B48CCA6007A6B33 /* QueueWithPriorityQueueTests.swift */,
+				73AE93342B4F3558007A6B33 /* YoungTableauTests.swift */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -225,6 +235,7 @@
 			children = (
 				73A22ABC2519D98100551DC0 /* SortingTests.swift */,
 				738343112B33BC3900747C40 /* SortingWithSortKeysTests.swift */,
+				73AE93382B4F54AE007A6B33 /* CubicYoungTableauSortTests.swift */,
 			);
 			path = Sorting;
 			sourceTree = "<group>";
@@ -337,6 +348,7 @@
 				7383430D2B33B32B00747C40 /* MergeSortWithSortKeys.swift */,
 				7308113C252459BB0077FCB2 /* BubbleSort.swift */,
 				7381C7C62B44B7C300F5E5FD /* HeapSort.swift */,
+				73AE93362B4F4FFF007A6B33 /* CubicYoungTableauSort.swift */,
 			);
 			path = Sorting;
 			sourceTree = "<group>";
@@ -460,7 +472,9 @@
 				73AE932F2B48CC13007A6B33 /* QueueWithPriorityQueue.swift in Sources */,
 				73A22AC4251B385600551DC0 /* LinearSearch.swift in Sources */,
 				739E07CD251C7B4D004C05BD /* BinarySearch.swift in Sources */,
+				73AE93332B4CE5F1007A6B33 /* YoungTableau.swift in Sources */,
 				739E080025231B0A004C05BD /* MiscellaneousAlgorithms.swift in Sources */,
+				73AE93372B4F4FFF007A6B33 /* CubicYoungTableauSort.swift in Sources */,
 				733956E42A787A9E007E8778 /* StrassenSquareMatrixMultiplicationAlgorithm.swift in Sources */,
 				73DA202725651B2700EC8CEB /* LinearTimeMaximumSubarrayProblemSolver.swift in Sources */,
 				73A22AC22519E95D00551DC0 /* SortingAlgorithm.swift in Sources */,
@@ -479,8 +493,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73AE93392B4F54AE007A6B33 /* CubicYoungTableauSortTests.swift in Sources */,
 				739E07C9251B3B9D004C05BD /* SearchTests.swift in Sources */,
 				73AE93312B48CCA6007A6B33 /* QueueWithPriorityQueueTests.swift in Sources */,
+				73AE93352B4F3558007A6B33 /* YoungTableauTests.swift in Sources */,
 				73A22AC02519E5C800551DC0 /* Numbers.swift in Sources */,
 				73F06CA2254AB6BE00C7B5AA /* MaximumSubarrayProblemSolverTests.swift in Sources */,
 				735D84132B3B88F000631B09 /* RandomSampleTests.swift in Sources */,

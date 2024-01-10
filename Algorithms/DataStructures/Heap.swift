@@ -203,4 +203,18 @@ public struct Heap<ComparableType: Comparable> {
             i = parent(i: i)
         }
     }
+
+    public mutating func delete(i initialIndex: Int) {
+        // from increaseKey
+        var i = initialIndex
+        while i > 0 {
+            array[i] = array[parent(i: i)]
+            i = parent(i: i)
+        }
+
+        // from extractMax
+        array[i] = array[heapSize-1]
+        heapSize -= 1
+        maxHeapify()
+    }
 }
