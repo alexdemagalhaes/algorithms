@@ -16,7 +16,8 @@ final class SortingTests: XCTestCase {
             AnySortingAlgorithm(SelectionSort(input: input)),
             AnySortingAlgorithm(MergeSort(input: input)),
             AnySortingAlgorithm(BubbleSort(input: input)),
-            AnySortingAlgorithm(HeapSort(input: input))
+            AnySortingAlgorithm(HeapSort(input: input)),
+            AnySortingAlgorithm(QuickSort(input: input))
         ]
         algorithms.forEach { algorithm in
             XCTAssertEqual(algorithm.sort(), expectedOutput)
@@ -49,6 +50,10 @@ final class SortingTests: XCTestCase {
 
     func testIntArray3IsSortedCorrectly() {
         testSortingAlgorithms(withInput: [5, 13, 2, 25, 7, 17, 20, 8, 4], expectedOutput: [2, 4, 5, 7, 8, 13, 17, 20, 25])
+    }
+
+    func testIntArray4IsSortedCorrectly() {
+        testSortingAlgorithms(withInput: [13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11], expectedOutput: [2, 4, 5, 6, 7, 8, 9, 11, 12, 13, 19, 21])
     }
 
     func testDoubleArray1IsSortedCorrectly() {
